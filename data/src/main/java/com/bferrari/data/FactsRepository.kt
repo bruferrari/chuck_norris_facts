@@ -1,12 +1,6 @@
 package com.bferrari.data
 
-import com.bferrari.domain.Facts
+class FactsRepository(private val api: StoneAppApi) : FactsDataSource {
 
-class FactsRepository(private val dataSource: FactsDataSource) {
-
-    fun getFacts(query: String) = dataSource.getFacts(query)
-}
-
-interface FactsDataSource {
-    fun getFacts(query: String): List<Facts>
+    override fun getFacts(query: String) = api.getFacts(query).map { it.result }
 }
