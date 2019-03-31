@@ -12,8 +12,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import sun.util.logging.LoggingSupport.setLevel
 
-
-
 val apiModule = module {
     single<StoneAppApi> {
         val interceptor = HttpLoggingInterceptor().apply {

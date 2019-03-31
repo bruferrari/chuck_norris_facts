@@ -5,25 +5,29 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bferrari.domain.Facts
+import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.R
 import com.bferrari.stonechallenge.extensions.show
 import kotlinx.android.synthetic.main.facts_item.view.*
 
-class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAdapter.ViewHolder>() {
+class FactsAdapter(private val context: Context,
+                   private val shareListener: (Fact) -> Unit) : RecyclerView.Adapter<FactsAdapter.ViewHolder>() {
 
-    var data = emptyList<Facts>()
+    var data = emptyList<Fact>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(facts: Facts) {
-            itemView.fact.text = facts.value
-            facts.category?.let {
-                itemView.category.show()
-                itemView.category.text = it[0].toUpperCase()
+        fun bind(context: Context, listener: (Fact) -> Unit, fact: Fact) {
+            itemView.fact.text = fact.value
+            val categories = fact.category?.let { it } ?: listOf(context.getString(R.string.uncategorized))
+
+            itemView.category.setData(categories)
+
+            itemView.shareBtn.setOnClickListener {
+                listener.invoke(fact)
             }
         }
     }
@@ -31,7 +35,8 @@ class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAda
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+        val fact = data[position]
+        holder.bind(context, shareListener, fact)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
