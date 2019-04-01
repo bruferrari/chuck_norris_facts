@@ -1,5 +1,7 @@
 package com.bferrari.stonechallenge.extensions
 
+import android.support.annotation.StringRes
+import android.support.design.widget.Snackbar
 import android.view.View
 
 fun View.hide() {
@@ -8,4 +10,16 @@ fun View.hide() {
 
 fun View.show() {
     visibility = View.VISIBLE
+}
+
+inline fun View.snack(@StringRes messageRes: Int, length: Int = Snackbar.LENGTH_LONG) {
+    snack(resources.getString(messageRes), length)
+}
+
+inline fun View.snack(
+    message: String,
+    length: Int = Snackbar.LENGTH_LONG
+) {
+    val snack = Snackbar.make(this, message, length)
+    snack.show()
 }

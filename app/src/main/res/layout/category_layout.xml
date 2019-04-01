@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="category" type="String" />
+    </data>
+
+    <android.support.design.chip.Chip
+        android:id="@+id/factCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{category}"
+        style="@style/tagStyle"
+        tools:text="@string/uncategorized"/>
+
+</layout>
