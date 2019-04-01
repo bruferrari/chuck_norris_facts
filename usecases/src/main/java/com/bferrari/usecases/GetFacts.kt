@@ -1,9 +1,8 @@
 package com.bferrari.usecases
 
-import com.bferrari.data.FactsRepository
-//import com.bferrari.domain.Fact
+import com.bferrari.data.FactsDataSource
 
-class GetFacts(private val factsRepository: FactsRepository) {
+class GetFacts(private val factsDataSource: FactsDataSource) {
 
-//    operator fun invoke(query: String): List<Fact> = factsRepository.getFacts(query)
+    operator fun invoke(query: String) = factsDataSource.getFacts(query)
 }

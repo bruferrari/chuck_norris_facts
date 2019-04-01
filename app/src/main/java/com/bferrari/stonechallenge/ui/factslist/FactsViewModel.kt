@@ -1,14 +1,14 @@
 package com.bferrari.stonechallenge.ui.factslist
 
 import android.arch.lifecycle.ViewModel
-import com.bferrari.data.FactsDataSource
+import com.bferrari.usecases.GetFacts
 import io.reactivex.disposables.CompositeDisposable
 
-class FactsViewModel(private val dataSource: FactsDataSource) : ViewModel() {
+class FactsViewModel(private val getFactsUseCase: GetFacts) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    fun getFacts(query: String) = dataSource.getFacts(query)
+    fun getFacts(query: String) = getFactsUseCase.invoke(query)
 
     override fun onCleared() {
         compositeDisposable.clear()
