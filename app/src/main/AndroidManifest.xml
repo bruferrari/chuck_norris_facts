@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.searchfacts.SearchFacts"
+        <activity android:name=".ui.searchfacts.SearchFactsActivity"
             android:screenOrientation="portrait"/>
     </application>
 

@@ -4,4 +4,6 @@
     <string name="share">Compartilhar</string>
     <string name="uncategorized">Uncategorized</string>
     <string name="msg_error">An error has occurred, please try again.</string>
+    <string name="search_hint">Enter your search term</string>
+    <string name="msg_empty_state">There\'re no facts to be displayed at this moment</string>
 </resources>

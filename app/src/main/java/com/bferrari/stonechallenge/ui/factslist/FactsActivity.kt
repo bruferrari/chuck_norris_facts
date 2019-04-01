@@ -1,5 +1,6 @@
 package com.bferrari.stonechallenge.ui.factslist
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,8 +9,8 @@ import android.view.Menu
 import android.view.MenuItem
 import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.R
-import com.bferrari.stonechallenge.extensions.snack
-import com.bferrari.stonechallenge.ui.searchfacts.SearchFacts
+import com.bferrari.stonechallenge.extensions.*
+import com.bferrari.stonechallenge.ui.searchfacts.SearchFactsActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -26,22 +27,16 @@ class FactsActivity : AppCompatActivity() {
 
     private val disposable = CompositeDisposable()
 
+    companion object {
+        const val SEARCH_QUERY = "SEARCH_QUERY"
+        const val SEARCH_REQUEST_CODE = 99
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setupRecyclerView()
-
-        disposable.add(viewModel.getFacts("car")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({
-                Timber.d(it.toString())
-                setFacts(it)
-            }, {
-                displayError()
-                Timber.e(it)
-            }))
     }
 
     override fun onStop() {
@@ -51,21 +46,51 @@ class FactsActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         adapter = FactsAdapter(this, ::share)
+
+        displayEmptyState()
+
         factsRecyclerView.layoutManager =
                 LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         factsRecyclerView.adapter = adapter
     }
 
     private fun setFacts(facts: List<Fact>) {
-        adapter.data = facts
+        if (facts.isNotEmpty()) {
+            adapter.data = facts
+            hideEmptyState()
+        } else {
+            displayEmptyState()
+        }
     }
 
-    private fun displayError() {
+    private fun getFacts(query: String) {
+        viewModel.getFacts(query)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe {
+                    setLoadingIndicator(true)
+                    hideEmptyState()
+                }
+                .doOnComplete { setLoadingIndicator(false) }
+                .doOnError { setLoadingIndicator(false) }
+                .subscribe ({ setFacts(it) }, ::handleError)
+                .add(disposable)
+    }
+
+    private fun setLoadingIndicator(display: Boolean) {
+        if (display)
+            progressBar.show()
+        else
+            progressBar.hide()
+    }
+
+    private fun handleError(error: Throwable) {
         rootLayout.snack(getString(R.string.msg_error))
+        Timber.e(error)
     }
 
-    private fun openSearchActivity() {
-        startActivity(Intent(this, SearchFacts::class.java))
+    private fun openSearchActivity(requestCode: Int) {
+        navigateForResult<SearchFactsActivity>(requestCode)
     }
 
     private fun share(fact: Fact) {
@@ -78,6 +103,16 @@ class FactsActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share)))
     }
 
+    private fun displayEmptyState() {
+        factsRecyclerView.hide()
+        emptyState.show()
+    }
+
+    private fun hideEmptyState() {
+        factsRecyclerView.show()
+        emptyState.hide()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
@@ -85,10 +120,22 @@ class FactsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
-            R.id.search -> openSearchActivity()
+            R.id.searchLayout -> openSearchActivity(SEARCH_REQUEST_CODE)
             else -> return super.onOptionsItemSelected(item)
         }
 
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == SEARCH_REQUEST_CODE) {
+                adapter.data = emptyList()
+                data?.getStringExtra(SEARCH_QUERY)?.let {
+                    getFacts(it)
+                }
+            }
+
+        }
     }
 }
