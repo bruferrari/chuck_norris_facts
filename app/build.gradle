@@ -42,11 +42,13 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
     implementation project(':usecases')
+    implementation project(':framework')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
-    implementation "com.android.support:design:$supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.core:core-ktx:$androidxCode"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "com.google.android.material:material:$materialComponents"
 
     //Koin
     implementation "org.koin:koin-core:$koinVersion"
@@ -65,9 +67,14 @@ dependencies {
     //Timber
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+
     //Unit Tests
     testImplementation "junit:junit:$jUnitVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
     // Espresso (Instrumentation Tests)
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    testImplementation "android.arch.core:core-testing:$coreTestingVersion"
 }
