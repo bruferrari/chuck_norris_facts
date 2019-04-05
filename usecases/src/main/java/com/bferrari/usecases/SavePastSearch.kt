@@ -1,4 +1,9 @@
 package com.bferrari.usecases
 
-class SavePastSearch {
+import com.bferrari.data.datasource.PastSearchDataSource
+import com.bferrari.domain.PastSearch
+
+class SavePastSearch(private val pastSearchDataSource: PastSearchDataSource) {
+
+    operator fun invoke(pastSearch: PastSearch) = pastSearchDataSource.savePastSearch(pastSearch)
 }

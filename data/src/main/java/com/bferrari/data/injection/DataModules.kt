@@ -1,17 +1,14 @@
 package com.bferrari.data.injection
 
-import com.bferrari.data.datasource.FactsDataSource
-import com.bferrari.data.datasource.FactsRepository
 import com.bferrari.data.StoneAppApi
-import com.bferrari.data.datasource.CategoryDataSource
-import com.bferrari.data.datasource.CategoryRepository
+import com.bferrari.data.datasource.*
 import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 
 val apiModule = module {
     single<StoneAppApi> {
@@ -35,4 +32,6 @@ val dataModule = module {
     single<FactsDataSource> { FactsRepository(get()) }
 
     single<CategoryDataSource> { CategoryRepository(get(), get()) }
+
+    single<PastSearchDataSource> { PastSearchRepository(get()) }
 }

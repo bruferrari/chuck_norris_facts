@@ -5,7 +5,9 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 
 interface CategoryCache {
-    fun save(categories: List<Category>): Completable
-    fun isCached(): Boolean
+    fun put(categories: List<Category>): Completable
+
     fun get(): Flowable<List<Category>>
+
+    fun isCached(): Boolean
 }

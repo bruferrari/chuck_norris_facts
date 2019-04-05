@@ -2,8 +2,8 @@ package com.bferrari.framework.mapper
 
 interface EntityMapper<T, V> {
 
-    fun mapFromCached(source: T): V
+    fun mapFrom(source: T): V
 
-    fun mapToCached(source: V): T
+    fun mapTo(source: V): T
 
 }
