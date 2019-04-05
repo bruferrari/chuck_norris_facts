@@ -99,3 +99,10 @@ n
 >usecases/src/main/java/com/bferrari/usecases/SavePastSearch.kt,c/8/c892f114a66fb656dcb3a8dfa1d69449bbe3786f
 m
 =framework/src/main/java/com/bferrari/framework/AppDatabase.kt,b/c/bc8a6197c05e9fe7190d625b591a8266deb73cdd
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+~
+Nframework/src/main/java/com/bferrari/framework/converters/DateTypeConverter.kt,4/c/4c269408cae4e03f1ce326d1549323d13664c696
+E
+usecases/build.gradle,a/6/a6f2e24db4af450148c09ad2102d674b776723f8

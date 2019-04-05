@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bferrari.domain.Fact
@@ -95,7 +96,7 @@ class FactsActivity : AppCompatActivity() {
     }
 
     private fun handleError(error: Throwable) {
-        rootLayout.snack(getString(R.string.msg_error))
+        rootLayout.snack(R.string.msg_error)
         Timber.e(error)
     }
 
@@ -146,6 +147,13 @@ class FactsActivity : AppCompatActivity() {
                 }
             }
 
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState?.let {
+            setFacts(viewModel.facts.value ?: return)
         }
     }
 }

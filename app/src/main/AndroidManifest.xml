@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.searchfacts.SearchFactsActivity"/>
+        <activity android:name=".ui.searchfacts.SearchFactsActivity"
+                  android:parentActivityName=".ui.factslist.FactsActivity"
+                  android:launchMode="singleTop"/>
     </application>
 
 </manifest>

@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NavUtils
 import com.bferrari.stonechallenge.R
 import com.bferrari.stonechallenge.extensions.add
 import com.bferrari.stonechallenge.ui.factslist.FactsActivity
@@ -24,14 +26,24 @@ class SearchFactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_facts)
 
+        setupToolbar()
+
         setupViews()
         getCategories()
         getPastSearches()
+
     }
 
     override fun onStop() {
         super.onStop()
         disposable.clear()
+    }
+
+    private fun setupToolbar() {
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            title = getString(R.string.search_facts)
+        }
     }
 
     private fun getCategories() {
@@ -75,6 +87,15 @@ class SearchFactsActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> NavUtils.navigateUpFromSameTask(this)
+            else -> super.onOptionsItemSelected(item)
+        }
+
+        return true
     }
 
 }
