@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "past_searches")
-data class PastSearchesEntity(
+data class PastSearchEntity(
     @PrimaryKey
     val id: Int,
     @ColumnInfo(name = "query")

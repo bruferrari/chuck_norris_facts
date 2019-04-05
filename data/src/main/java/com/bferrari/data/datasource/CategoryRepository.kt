@@ -21,7 +21,7 @@ class CategoryRepository(private val api: StoneAppApi,
             api.getCategories()
                 .retryWhen(RetryWithDelay(listOf(FIRST_CALL, SECOND_CALL)))
                 .flatMapCompletable {
-                    cache.save(it.mapIndexed { id, value ->
+                    cache.put(it.mapIndexed { id, value ->
                         Category(id + 1, value)
                     })
                 }

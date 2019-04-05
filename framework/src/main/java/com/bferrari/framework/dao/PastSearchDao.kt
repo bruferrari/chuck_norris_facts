@@ -9,7 +9,7 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 
 @Dao
-interface PastSearchesDao {
+interface PastSearchDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(query: PastSearchEntity): Completable

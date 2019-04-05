@@ -3,6 +3,7 @@ package com.bferrari.stonechallenge.ui.searchfacts
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import com.bferrari.stonechallenge.R
@@ -25,6 +26,7 @@ class SearchFactsActivity : AppCompatActivity() {
 
         setupViews()
         getCategories()
+        getPastSearches()
     }
 
     override fun onStop() {
@@ -38,6 +40,15 @@ class SearchFactsActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 suggestionTags.setData(it.map { category -> category.name ?: "" }, ::onCategoryClick)
+            }.add(disposable)
+    }
+
+    private fun getPastSearches() {
+        searchFactsViewModel.getPastSearches()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                Log.d("AQUI", it.toString())
             }.add(disposable)
     }
 
