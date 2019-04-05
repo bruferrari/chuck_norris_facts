@@ -15,6 +15,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 
     implementation project(':data')
+    implementation project(':domain')
 }
 
 sourceCompatibility = "8"
