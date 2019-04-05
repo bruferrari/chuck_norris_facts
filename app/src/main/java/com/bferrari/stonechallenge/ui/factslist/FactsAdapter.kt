@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.R
+import com.bferrari.stonechallenge.extensions.applyTextSizeRule
 import kotlinx.android.synthetic.main.facts_item.view.*
 
 class FactsAdapter(private val context: Context,
@@ -28,6 +29,8 @@ class FactsAdapter(private val context: Context,
             itemView.shareBtn.setOnClickListener {
                 listener.invoke(fact)
             }
+
+            itemView.fact.applyTextSizeRule()
         }
     }
 
