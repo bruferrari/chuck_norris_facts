@@ -10,4 +10,7 @@ interface StoneAppApi {
     @GET("jokes/search")
     fun getFacts(@Query("query") query: String): Observable<FactsResponse>
 
+    @GET("jokes/categories")
+    fun getCategories(): Observable<List<String>>
+
 }

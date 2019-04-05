@@ -1,4 +1,4 @@
-package com.bferrari.data
+package com.bferrari.data.datasource
 
 import com.bferrari.domain.Fact
 import io.reactivex.Observable

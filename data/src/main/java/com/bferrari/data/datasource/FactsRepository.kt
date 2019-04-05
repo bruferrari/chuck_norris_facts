@@ -1,4 +1,6 @@
-package com.bferrari.data
+package com.bferrari.data.datasource
+
+import com.bferrari.data.StoneAppApi
 
 class FactsRepository(private val api: StoneAppApi) : FactsDataSource {
 

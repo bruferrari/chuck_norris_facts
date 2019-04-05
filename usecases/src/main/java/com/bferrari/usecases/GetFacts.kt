@@ -1,6 +1,6 @@
 package com.bferrari.usecases
 
-import com.bferrari.data.FactsDataSource
+import com.bferrari.data.datasource.FactsDataSource
 
 class GetFacts(private val factsDataSource: FactsDataSource) {
 

@@ -1,13 +1,12 @@
 package com.bferrari.stonechallenge.ui.factslist
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.R
-import com.bferrari.stonechallenge.extensions.show
 import kotlinx.android.synthetic.main.facts_item.view.*
 
 class FactsAdapter(private val context: Context,
@@ -24,7 +23,7 @@ class FactsAdapter(private val context: Context,
             itemView.fact.text = fact.value
             val categories = fact.category?.let { it } ?: listOf(context.getString(R.string.uncategorized))
 
-            itemView.category.setData(categories)
+            itemView.category.setData(categories, null)
 
             itemView.shareBtn.setOnClickListener {
                 listener.invoke(fact)

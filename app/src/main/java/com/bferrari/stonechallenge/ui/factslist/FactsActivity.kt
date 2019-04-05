@@ -3,10 +3,11 @@ package com.bferrari.stonechallenge.ui.factslist
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.R
 import com.bferrari.stonechallenge.extensions.*
@@ -16,7 +17,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
-
 import timber.log.Timber
 
 class FactsActivity : AppCompatActivity() {
@@ -37,6 +37,8 @@ class FactsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setupRecyclerView()
+
+        getCategories()
     }
 
     override fun onStop() {
@@ -50,7 +52,7 @@ class FactsActivity : AppCompatActivity() {
         displayEmptyState()
 
         factsRecyclerView.layoutManager =
-                LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         factsRecyclerView.adapter = adapter
     }
 
@@ -75,6 +77,14 @@ class FactsActivity : AppCompatActivity() {
                 .doOnError { setLoadingIndicator(false) }
                 .subscribe ({ setFacts(it) }, ::handleError)
                 .add(disposable)
+    }
+
+    private fun getCategories() {
+        viewModel.getCategories()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+            .add(disposable)
     }
 
     private fun setLoadingIndicator(display: Boolean) {
