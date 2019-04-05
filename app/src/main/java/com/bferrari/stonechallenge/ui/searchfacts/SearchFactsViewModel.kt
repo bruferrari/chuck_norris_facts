@@ -14,5 +14,5 @@ class SearchFactsViewModel(private val getCategories: GetCategories,
 
     fun getPastSearches() = getPastSearches.invoke()
 
-    fun savePastSearch(pastSearch: PastSearch) = savePastSearch.invoke(pastSearch)
+//    fun savePastSearch(pastSearch: PastSearch) = savePastSearch.invoke(pastSearch)
 }

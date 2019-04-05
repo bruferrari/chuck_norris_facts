@@ -7,6 +7,7 @@ import com.bferrari.framework.AppDatabase
 import com.bferrari.framework.CategoryCacheImpl
 import com.bferrari.framework.PastSearchCacheImpl
 import com.bferrari.framework.mapper.CategoryMapper
+import com.bferrari.framework.mapper.PastSearchMapper
 import org.koin.dsl.module.module
 
 val frameworkModule = module {
@@ -16,6 +17,8 @@ val frameworkModule = module {
     }
 
     single { CategoryMapper() }
+
+    single { PastSearchMapper() }
 
     single<CategoryCache> { CategoryCacheImpl(get(), get()) }
 
