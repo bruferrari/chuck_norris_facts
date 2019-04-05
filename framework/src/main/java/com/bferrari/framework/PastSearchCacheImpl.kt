@@ -8,6 +8,7 @@ import io.reactivex.Flowable
 
 class PastSearchCacheImpl(private val db: AppDatabase,
                           private val mapper: PastSearchMapper) : PastSearchCache {
+
     override fun put(pastSearch: PastSearch): Completable {
         return db.pastSearchDao().insert(mapper.mapTo(pastSearch))
     }
