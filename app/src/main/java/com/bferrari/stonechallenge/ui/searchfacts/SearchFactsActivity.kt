@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
+import com.bferrari.domain.PastSearch
 import com.bferrari.stonechallenge.R
 import com.bferrari.stonechallenge.extensions.add
 import com.bferrari.stonechallenge.ui.factslist.FactsActivity
@@ -19,7 +20,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class SearchFactsActivity : AppCompatActivity() {
 
-    private val searchFactsViewModel: SearchFactsViewModel by viewModel()
+    private val viewModel: SearchFactsViewModel by viewModel()
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +48,7 @@ class SearchFactsActivity : AppCompatActivity() {
     }
 
     private fun getCategories() {
-        searchFactsViewModel.getCategories()
+        viewModel.getCategories()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
@@ -56,7 +57,7 @@ class SearchFactsActivity : AppCompatActivity() {
     }
 
     private fun getPastSearches() {
-        searchFactsViewModel.getPastSearches()
+        viewModel.getPastSearches()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
@@ -81,12 +82,22 @@ class SearchFactsActivity : AppCompatActivity() {
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_DONE -> {
-                    setSearchTerm(searchEditText.text.toString())
+                    val query = searchEditText.text.toString()
+                    setSearchTerm(query)
+                    saveSearch(query)
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    private fun saveSearch(query: String) {
+        viewModel.savePastSearch(PastSearch(query))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+            .add(disposable)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
