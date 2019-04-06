@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bferrari.domain.Fact
@@ -111,7 +110,7 @@ class FactsActivity : AppCompatActivity() {
             type = "text/plain"
         }
 
-        startActivity(Intent.createChooser(shareIntent, getString(R.string.share)))
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_label)))
     }
 
     private fun displayEmptyState() {

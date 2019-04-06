@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">Stone Challenge</string>
-    <string name="search">Buscar</string>
-    <string name="share">Compartilhar</string>
-    <string name="uncategorized">Uncategorized</string>
+    <string name="search_label">Buscar</string>
+    <string name="share_label">Compartilhar</string>
+    <string name="uncategorized_label">Uncategorized</string>
     <string name="msg_error">An error has occurred, please try again.</string>
     <string name="search_hint">Enter your search term</string>
     <string name="msg_empty_state">There\'re no facts to be displayed at this moment</string>
-    <string name="search_facts">Search Facts</string>
+    <string name="search_facts_label">Search Facts</string>
+    <string name="past_searches_label">Past Searches</string>
+    <string name="suggestions_label">Suggestions</string>
 </resources>

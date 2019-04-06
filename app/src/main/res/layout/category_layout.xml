@@ -14,6 +14,6 @@
         android:layout_height="wrap_content"
         android:text="@{category}"
         style="@style/tagStyle"
-        tools:text="@string/uncategorized"/>
+        tools:text="@string/uncategorized_label"/>
 
 </layout>
