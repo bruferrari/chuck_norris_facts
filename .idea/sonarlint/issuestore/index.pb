@@ -108,3 +108,11 @@ E
 usecases/build.gradle,a/6/a6f2e24db4af450148c09ad2102d674b776723f8
 ‚
 Rapp/src/main/java/com/bferrari/stonechallenge/ui/searchfacts/SearchFactsAdapter.kt,f/a/fa4a34457e7ae3f6d16b902d059f4ffb02c01681
+k
+;data/src/main/java/com/bferrari/data/model/FactsResponse.kt,4/4/44d4fce2d2f62b1e727e2efd886b2bb011a92010
+v
+Fdata/src/test/java/com/bferrari/data/datasource/FactsRepositoryTest.kt,f/f/ff46e7c8a102a6ffaac14ef6c745977f669c36c4
+O
+data/src/test/java/TestUtils.kt,c/7/c727352a31b8b8825ff766707df046dab44a12cd
+{
+Kdata/src/test/java/com/bferrari/data/datasource/PastSearchRepositoryTest.kt,4/9/49e8e8c2a3850f38a74e9412dcd6d8b78e23c634
