@@ -8,8 +8,7 @@ import java.util.*
 @Entity(tableName = "past_searches")
 data class PastSearchEntity(
     @PrimaryKey
-    val id: Int,
     @ColumnInfo(name = "query")
-    var query: String?,
+    var query: String,
     @ColumnInfo(name = "date")
     var date: Date)

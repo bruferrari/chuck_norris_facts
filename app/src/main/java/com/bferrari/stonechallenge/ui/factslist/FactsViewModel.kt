@@ -3,8 +3,11 @@ package com.bferrari.stonechallenge.ui.factslist
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bferrari.domain.Fact
+import com.bferrari.domain.PastSearch
 import com.bferrari.usecases.GetFacts
 import com.bferrari.usecases.SaveCategories
+import com.bferrari.usecases.SavePastSearch
+import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 
 class FactsViewModel(private val getFacts: GetFacts,
