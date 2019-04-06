@@ -11,7 +11,8 @@ import com.bferrari.stonechallenge.extensions.applyTextSizeRule
 import kotlinx.android.synthetic.main.facts_item.view.*
 
 class FactsAdapter(private val context: Context,
-                   private val shareListener: (Fact) -> Unit) : RecyclerView.Adapter<FactsAdapter.ViewHolder>() {
+                   private val shareListener: (Fact) -> Unit)
+    : RecyclerView.Adapter<FactsAdapter.ViewHolder>() {
 
     var data = emptyList<Fact>()
         set(value) {
@@ -22,7 +23,7 @@ class FactsAdapter(private val context: Context,
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(context: Context, listener: (Fact) -> Unit, fact: Fact) {
             itemView.fact.text = fact.value
-            val categories = fact.category?.let { it } ?: listOf(context.getString(R.string.uncategorized))
+            val categories = fact.category?.let { it } ?: listOf(context.getString(R.string.uncategorized_label))
 
             itemView.category.setData(categories, null)
 
@@ -42,7 +43,8 @@ class FactsAdapter(private val context: Context,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.facts_item, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.facts_item,
+                parent, false)
 
         return ViewHolder(itemView)
     }
