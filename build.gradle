@@ -16,6 +16,9 @@ ext {
     roomVersion = '2.1.0-alpha06'
     androidxCode = '1.1.0-alpha04'
     materialComponents = '1.1.0-alpha04'
+    mockitoVersion = '2.24.5'
+    coreTestingVersion = "1.1.1"
+    mockWebServerVersion = '3.13.1'
 }
 
 buildscript {

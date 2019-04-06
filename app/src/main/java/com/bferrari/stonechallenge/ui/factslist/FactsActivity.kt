@@ -83,6 +83,7 @@ class FactsActivity : AppCompatActivity() {
         viewModel.getCategories()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnError(::handleError)
             .subscribe()
             .add(disposable)
     }

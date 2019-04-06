@@ -19,11 +19,13 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_search_facts.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class SearchFactsActivity : AppCompatActivity() {
 
     private val viewModel: SearchFactsViewModel by viewModel()
     private lateinit var searchAdapter: SearchFactsAdapter
+
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,10 +64,8 @@ class SearchFactsActivity : AppCompatActivity() {
         viewModel.getPastSearches()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                Log.d("AQUI", it.toString())
-                setPastSearches(it)
-            }.add(disposable)
+            .subscribe(::setPastSearches)
+            .add(disposable)
     }
 
     private fun onCategoryClick(query: String) {

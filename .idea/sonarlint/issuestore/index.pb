@@ -106,3 +106,5 @@ m
 Nframework/src/main/java/com/bferrari/framework/converters/DateTypeConverter.kt,4/c/4c269408cae4e03f1ce326d1549323d13664c696
 E
 usecases/build.gradle,a/6/a6f2e24db4af450148c09ad2102d674b776723f8
+‚
+Rapp/src/main/java/com/bferrari/stonechallenge/ui/searchfacts/SearchFactsAdapter.kt,f/a/fa4a34457e7ae3f6d16b902d059f4ffb02c01681

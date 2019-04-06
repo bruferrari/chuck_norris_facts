@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.bferrari.domain.PastSearch
 import com.bferrari.usecases.GetCategories
 import com.bferrari.usecases.GetPastSearches
+import com.bferrari.usecases.SaveCategories
 import com.bferrari.usecases.SavePastSearch
 
 class SearchFactsViewModel(private val getCategories: GetCategories,
