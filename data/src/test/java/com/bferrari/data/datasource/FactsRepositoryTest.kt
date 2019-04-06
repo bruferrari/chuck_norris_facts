@@ -1,5 +1,6 @@
 package com.bferrari.data.datasource
 
+import TestUtils.Companion.retrofitInstance
 import com.bferrari.data.StoneAppApi
 import com.bferrari.data.model.FactsResponse
 import com.bferrari.domain.Fact
@@ -32,14 +33,7 @@ class FactsRepositoryTest {
         webServer = MockWebServer()
 
         val baseURL = webServer.url("/").toString()
-        val okHttpClient = OkHttpClient.Builder()
-            .build()
-        val retrofit = Retrofit.Builder()
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(baseURL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
+        val retrofit = retrofitInstance(baseURL)
 
         api = retrofit.create(StoneAppApi::class.java)
 
