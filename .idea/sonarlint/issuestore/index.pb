@@ -116,3 +116,17 @@ O
 data/src/test/java/TestUtils.kt,c/7/c727352a31b8b8825ff766707df046dab44a12cd
 {
 Kdata/src/test/java/com/bferrari/data/datasource/PastSearchRepositoryTest.kt,4/9/49e8e8c2a3850f38a74e9412dcd6d8b78e23c634
+y
+Idata/src/test/java/com/bferrari/data/datasource/CategoryRepositoryTest.kt,d/5/d5432c8566ef3da7bea706710a0ff4a68aea8e68
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+A
+fastlane/Fastfile,9/f/9f0f12aa0bd74d8115ab3d187b7d8ddcfcc1cc70
+q
+Ausecases/src/test/java/com/bferrari/usecases/GetCategoriesTest.kt,5/4/5455b294ce583ee83cb49aa27f9a193bfa7a2573
+l
+<usecases/src/test/java/com/bferrari/usecases/GetFactsTest.kt,4/e/4ef30598b4448937fa79f9c382b1b8ec4e86c062
+Z
+*usecases/src/test/java/UsecaseTestUtils.kt,e/7/e7140643f410b4667d666ad93bb2829d28c5e1d6
+s
+Cusecases/src/test/java/com/bferrari/usecases/GetPastSearchesTest.kt,1/f/1f4000500285ab8f9c8f5b8da8a81ccdb1744db9

@@ -15,5 +15,8 @@ class UsecaseTestUtils {
 
         val search = PastSearch("test")
         val searches = listOf(search)
+
+        val pastSearch = PastSearch("test")
+        val pastSearches = listOf(pastSearch)
     }
 }
