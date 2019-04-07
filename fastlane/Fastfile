@@ -15,6 +15,7 @@ platform :android do
   desc "Runs all unit tests"
   lane :unit_test do
     gradle(task: ":data:test")
+    gradle(task: ":usecases:test")
   end
 
   desc "Runs all the tests"
