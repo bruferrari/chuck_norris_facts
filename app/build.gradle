@@ -12,7 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         compileOptions {
             targetCompatibility = "8"
@@ -74,7 +74,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
     // Espresso (Instrumentation Tests)
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
-    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
-    testImplementation "android.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation "androidx.test:core:$testVersion"
+    androidTestImplementation "androidx.test:runner:$testVersion"
+    androidTestImplementation "androidx.test:rules:$testVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testVersion"
+
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+
+    androidTestImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    androidTestImplementation "android.arch.core:core-testing:$coreTestingVersion"
 }

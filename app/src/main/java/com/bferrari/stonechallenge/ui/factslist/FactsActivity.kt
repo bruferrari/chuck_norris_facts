@@ -131,7 +131,7 @@ class FactsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
-            R.id.searchLayout -> openSearchActivity(SEARCH_REQUEST_CODE)
+            R.id.search -> openSearchActivity(SEARCH_REQUEST_CODE)
             else -> return super.onOptionsItemSelected(item)
         }
 

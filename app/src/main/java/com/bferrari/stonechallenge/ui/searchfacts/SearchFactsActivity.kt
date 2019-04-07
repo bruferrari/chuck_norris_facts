@@ -3,7 +3,6 @@ package com.bferrari.stonechallenge.ui.searchfacts
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -19,12 +18,11 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_search_facts.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class SearchFactsActivity : AppCompatActivity() {
 
     private val viewModel: SearchFactsViewModel by viewModel()
-    private lateinit var searchAdapter: SearchFactsAdapter
+    private lateinit var searchAdapter: PastSearchesAdapter
 
     private val disposable = CompositeDisposable()
 
@@ -106,7 +104,7 @@ class SearchFactsActivity : AppCompatActivity() {
     }
 
     private fun setupPastSearches() {
-        searchAdapter = SearchFactsAdapter(::onPastSearchClick)
+        searchAdapter = PastSearchesAdapter(::onPastSearchClick)
 
         pastSearchesRv.layoutManager = LinearLayoutManager(
                 this, RecyclerView.VERTICAL, false)
