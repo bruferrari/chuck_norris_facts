@@ -14,15 +14,15 @@ This app uses the Antonio Leiva's clean architecture based on [this](https://ant
 # Details
 This app has 5 modules, which are *domain, data, usecases, framework and app*, which will be described below:
 
-- Domain: Holds the app's entities
+- **Domain**: Holds the app's entities
 
-- Data: Holds the different datasources for the project as well as their interfaces
+- **Data**: Holds the different datasources for the project as well as their interfaces
 
-- Usecases: Holds the user actions and interactions
+- **Usecases**: Holds the user actions and interactions
 
-- Framework: Is an Android module and implements mainly the dependencies that will be used at the other layers
+- **Framework**: Is an Android module and implements mainly the dependencies that will be used at the other layers
 
-- App: Another Android module that holds the UI, ViewModels and components for the application
+- **App**: Another Android module that holds the UI, ViewModels and components for the application
 
 # Tests
 This app implements unit and instrumentation tests for the modules below:
