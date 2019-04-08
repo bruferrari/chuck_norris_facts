@@ -20,7 +20,7 @@ This app has 5 modules, which are *domain, data, usecases, framework and app*, w
 
 - Usecases: Holds the user actions and interactions
 
-- Framework: Is an Android module and implements mainly the dependencies to the other layers
+- Framework: Is an Android module and implements mainly the dependencies that will be used at the other layers
 
 - App: Another Android module that holds the UI, ViewModels and components for the application
 
@@ -31,6 +31,33 @@ This app implements unit and instrumentation tests for the modules below:
 
 - Usecases: Test the user actions
 
-- Framework: Test for all dependencies that are used on the application (e.g. Room Persistence Database)
+- Framework: Test for all dependencies that are used on the application (e.g. Room Persistence Database for caching)
 
 - App: Contains instrumentation tests to test ViewModels and Activities as well as UI interactions with the application
+
+# Observations
+- This app persists locally the suggestions section (categories) and past searches
+
+- At the first time on the app it will display a welcome text that guides the user to search facts
+
+- The categories are fetched at the first running and stored locally for further use
+
+- It was necessary to keep some cache (local persistence) interfaces at the data module to be used at the repositories, bute their real implementation still on the *framework* layer.
+
+# Libraries
+- [Room Persistence Database](https://developer.android.com/topic/libraries/architecture/room)
+- [RxJava](https://github.com/ReactiveX/RxJava)
+- [RxAndroid](https://github.com/ReactiveX/RxAndroid)
+- [Koin](https://github.com/InsertKoinIO/koin)
+- [Retrofit](https://square.github.io/retrofit/)
+- [Timber](https://github.com/JakeWharton/timber)
+- [Stheto](https://github.com/facebook/stetho)
+- [Espresso](https://developer.android.com/training/testing/espresso)
+- [Mockito](https://github.com/mockito/mockito)
+- [JUnit4](https://github.com/junit-team/junit4)
+
+# References
+- [Android Arch Google Samples Repository](https://github.com/googlesamples/android-architecture)
+- [Clean architecture for Android with Kotlin: a pragmatic approach for starters](https://antonioleiva.com/clean-architecture-android/)
+- [Antonio Leiva Clean Architecture Repositories](https://github.com/antoniolg/clean-architecture)
+
