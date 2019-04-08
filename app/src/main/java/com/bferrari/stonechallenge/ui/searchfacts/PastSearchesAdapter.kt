@@ -39,5 +39,4 @@ class PastSearchesAdapter(private val listener: (String) -> Unit)
         val pastSearch = data[position]
         holder.bind(pastSearch, listener)
     }
-
 }
