@@ -1,4 +1,36 @@
-# stone_challenge
-Stone Challenge Application
-
+# Stone Challenge App
 [![Build Status](https://app.bitrise.io/app/f04e02a60b1a154e/status.svg?token=qshry3E1gJcmkmMwnjjUcQ)](https://app.bitrise.io/app/f04e02a60b1a154e)
+
+App made using the [Chuck Norris API](https://api.chucknorris.io) for searching Chuck Norris facts.
+
+# About this app
+- This app makes use of [Fastlane](https://fastlane.tools/) for tasks automation so, you'll have to install fastlane if you want to run these lanes locally.
+- There's also a continuous integration service running at [Bitrise](https://app.bitrise.io/app/f04e02a60b1a154e).
+- It was used the [Koin](https://github.com/InsertKoinIO/koin) for handle dependency injection.
+
+# Info
+This app uses the Antonio Leiva's clean architecture based on [this](https://antonioleiva.com/clean-architecture-android) article.
+
+# Details
+This app has 5 modules, which are *domain, data, usecases, framework and app*, which will be described below:
+
+- Domain: Holds the app's entities
+
+- Data: Holds the different datasources for the project as well as their interfaces
+
+- Usecases: Holds the user actions and interactions
+
+- Framework: Is an Android module and implements mainly the dependencies to the other layers
+
+- App: Another Android module that holds the UI, ViewModels and components for the application
+
+# Tests
+This app implements unit and instrumentation tests for the modules below:
+
+- Data: Test the repositories and if the data is correct
+
+- Usecases: Test the user actions
+
+- Framework: Test for all dependencies that are used on the application (e.g. Room Persistence Database)
+
+- App: Contains instrumentation tests to test ViewModels and Activities as well as UI interactions with the application
