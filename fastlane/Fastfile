@@ -23,6 +23,11 @@ platform :android do
     unit_test()
   end
 
+  desc "Run code analysis"
+  lane :analysis do
+    gradle(task: "detektCheck")
+  end
+
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     gradle(task: "assembleRelease")

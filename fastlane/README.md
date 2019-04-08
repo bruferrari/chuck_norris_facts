@@ -26,6 +26,11 @@ Runs all unit tests
 fastlane android test
 ```
 Runs all the tests
+### android analysis
+```
+fastlane android analysis
+```
+Run code analysis
 ### android beta
 ```
 fastlane android beta
