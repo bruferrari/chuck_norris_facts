@@ -12,6 +12,8 @@ class Tag(context: Context, attributeSet: AttributeSet) : ChipGroup(context, att
 
     private var tags = emptyList<String>()
 
+    fun getTagAt(position: Int) = tags[position]
+
     fun setData(tags: List<String>, listener: ((String) -> Unit)?) {
         this.tags = tags
         removeAllViews()

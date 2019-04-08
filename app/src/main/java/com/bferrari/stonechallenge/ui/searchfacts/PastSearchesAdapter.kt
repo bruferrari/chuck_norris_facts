@@ -8,8 +8,8 @@ import com.bferrari.domain.PastSearch
 import com.bferrari.stonechallenge.R
 import kotlinx.android.synthetic.main.search_item.view.*
 
-class SearchFactsAdapter(private val listener: (String) -> Unit)
-    : RecyclerView.Adapter<SearchFactsAdapter.ViewHolder>() {
+class PastSearchesAdapter(private val listener: (String) -> Unit)
+    : RecyclerView.Adapter<PastSearchesAdapter.ViewHolder>() {
 
     var data = emptyList<PastSearch>()
         set(value) {

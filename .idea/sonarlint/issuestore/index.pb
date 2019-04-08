@@ -106,8 +106,6 @@ m
 Nframework/src/main/java/com/bferrari/framework/converters/DateTypeConverter.kt,4/c/4c269408cae4e03f1ce326d1549323d13664c696
 E
 usecases/build.gradle,a/6/a6f2e24db4af450148c09ad2102d674b776723f8
-‚
-Rapp/src/main/java/com/bferrari/stonechallenge/ui/searchfacts/SearchFactsAdapter.kt,f/a/fa4a34457e7ae3f6d16b902d059f4ffb02c01681
 k
 ;data/src/main/java/com/bferrari/data/model/FactsResponse.kt,4/4/44d4fce2d2f62b1e727e2efd886b2bb011a92010
 v
@@ -130,3 +128,13 @@ Z
 *usecases/src/test/java/UsecaseTestUtils.kt,e/7/e7140643f410b4667d666ad93bb2829d28c5e1d6
 s
 Cusecases/src/test/java/com/bferrari/usecases/GetPastSearchesTest.kt,1/f/1f4000500285ab8f9c8f5b8da8a81ccdb1744db9
+r
+Busecases/src/test/java/com/bferrari/usecases/SaveCategoriesTest.kt,b/4/b45025e813431f784ed7294d6cdad031a39e1ecf
+r
+Busecases/src/test/java/com/bferrari/usecases/SavePastSearchTest.kt,a/4/a41b0ac53231a7fc68d1cbf9608e0bf6798818af
+ƒ
+Sapp/src/main/java/com/bferrari/stonechallenge/ui/searchfacts/PastSearchesAdapter.kt,1/a/1a12d7e2fa7cc90fa0a2b7380a8d4b924e9498c7
+p
+@app/src/androidTest/java/com/bferrari/stonechallenge/Matchers.kt,0/7/074d82a7521ba6d692b965c4b3e2d87d51557e55
+w
+Gapp/src/androidTest/java/com/bferrari/stonechallenge/SearchFactsTest.kt,d/8/d8963504fc49a66959e6e6758abe07ec517aae92
