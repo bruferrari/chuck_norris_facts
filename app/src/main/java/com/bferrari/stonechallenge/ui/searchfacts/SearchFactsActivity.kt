@@ -121,7 +121,7 @@ class SearchFactsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
-            android.R.id.home -> NavUtils.navigateUpFromSameTask(this)
+            android.R.id.home -> onBackPressed()
             else -> super.onOptionsItemSelected(item)
         }
 

@@ -50,7 +50,7 @@ class FactsActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         adapter = FactsAdapter(this, ::share)
 
-        displayEmptyState()
+        displayInitialState()
 
         factsRecyclerView.layoutManager =
                 LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -123,7 +123,18 @@ class FactsActivity : AppCompatActivity() {
 
     private fun displayEmptyState() {
         factsRecyclerView.hide()
-        emptyState.show()
+        emptyState.apply {
+            text = getString(R.string.msg_empty_state)
+            show()
+        }
+    }
+
+    private fun displayInitialState() {
+        factsRecyclerView.hide()
+        emptyState.apply {
+            text = getString(R.string.msg_initial_state)
+            show()
+        }
     }
 
     private fun hideEmptyState() {

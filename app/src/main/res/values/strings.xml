@@ -10,4 +10,6 @@
     <string name="past_searches_label">Past Searches</string>
     <string name="suggestions_label">Suggestions</string>
     <string name="retry">Retry</string>
+    <string name="msg_initial_state">Welcome to Chuck Norris facts, click at the search button above to find facts.
+    </string>
 </resources>
