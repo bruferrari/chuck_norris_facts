@@ -2,7 +2,6 @@ package com.bferrari.stonechallenge
 
 import android.view.View
 import android.widget.TextView
-import androidx.core.view.size
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.matcher.BoundedMatcher
 import com.bferrari.stonechallenge.components.Tag
@@ -10,7 +9,6 @@ import com.bferrari.stonechallenge.extensions.BIG_FONT_SIZE
 import com.bferrari.stonechallenge.extensions.SMALL_FONT_SIZE
 import com.bferrari.stonechallenge.extensions.pxToSp
 import com.bferrari.stonechallenge.ui.searchfacts.PastSearchesAdapter
-import com.google.android.material.chip.Chip
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 

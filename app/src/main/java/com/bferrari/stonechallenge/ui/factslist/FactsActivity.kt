@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bferrari.domain.Fact
+import com.bferrari.stonechallenge.EspressoIdlingResource
 import com.bferrari.stonechallenge.R
+import com.bferrari.stonechallenge.StoneChallengeApplication
 import com.bferrari.stonechallenge.extensions.*
 import com.bferrari.stonechallenge.ui.searchfacts.SearchFactsActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -66,6 +68,8 @@ class FactsActivity : AppCompatActivity() {
     }
 
     private fun getFacts(query: String) {
+        EspressoIdlingResource.idlingResource.increment()
+
         viewModel.getFacts(query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -73,7 +77,11 @@ class FactsActivity : AppCompatActivity() {
                     setLoadingIndicator(true)
                     hideEmptyState()
                 }
-                .doOnComplete { setLoadingIndicator(false) }
+                .doOnComplete {
+                    setLoadingIndicator(false)
+                    if (!EspressoIdlingResource.idlingResource.isIdleNow)
+                        EspressoIdlingResource.idlingResource.decrement()
+                }
                 .doOnError { setLoadingIndicator(false) }
                 .subscribe ({ setFacts(it) }, ::handleError)
                 .add(disposable)

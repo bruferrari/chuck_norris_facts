@@ -2,7 +2,9 @@ package com.bferrari.stonechallenge
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
@@ -31,6 +33,8 @@ class FactsListTest {
 
     @Test
     fun checkTextSizeOnRecyclerViewItem() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.idlingResource)
+
         val recyclerView = rule.activity.findViewById<RecyclerView>(R.id.factsRecyclerView)
 
         onView(withId(R.id.search)).perform(click())
@@ -39,8 +43,7 @@ class FactsListTest {
 
         val itemsCount = recyclerView.adapter?.itemCount ?: 0
 
-        Thread.sleep(10000)
-        for (position in 0..itemsCount) {
+        for (position in 0 until itemsCount) {
             onView(withId(R.id.factsRecyclerView)).apply {
                 perform(scrollToPosition<RecyclerView.ViewHolder>(position))
                 check(matches(checkTextSizeAt(position, R.id.fact)))
@@ -50,11 +53,12 @@ class FactsListTest {
 
     @Test
     fun checkUncategorizedLabelItem() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.idlingResource)
+
         onView(withId(R.id.search)).perform(click())
         onView(withId(R.id.searchEditText)).perform(typeText("test"), pressImeActionButton())
         onView(withId(R.id.factsRecyclerView)).check(matches(isDisplayed()))
 
-        Thread.sleep(10000)
         onView(withId(R.id.factsRecyclerView)).apply {
             perform(scrollToPosition<RecyclerView.ViewHolder>(5))
             check(matches(checkUncategorizedLabel(5, R.id.category)))

@@ -1,6 +1,7 @@
 package com.bferrari.stonechallenge
 
 import android.app.Application
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.bferrari.data.injection.apiModule
 import com.bferrari.data.injection.dataModule
 import com.bferrari.framework.injection.frameworkModule

@@ -36,11 +36,4 @@ class SearchFactsTest {
         onView(withId(R.id.suggestionTags)).check(matches(isDisplayed()))
         onView(withId(R.id.suggestionTags)).check(matches(hasChildCount(8)))
     }
-
-    @Test
-    fun checkSearch() {
-        onView(withId(R.id.searchEditText)).check(matches(isDisplayed()))
-        onView(withId(R.id.searchEditText)).perform(ViewActions.typeText("test"),
-            ViewActions.pressImeActionButton())
-    }
 }
