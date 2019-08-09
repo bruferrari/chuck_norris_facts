@@ -1,4 +1,4 @@
-# Stone Challenge App
+# Chuck Norris Facts Application
 [![Build Status](https://app.bitrise.io/app/f04e02a60b1a154e/status.svg?token=qshry3E1gJcmkmMwnjjUcQ)](https://app.bitrise.io/app/f04e02a60b1a154e)
 
 App made using the [Chuck Norris API](https://api.chucknorris.io) for searching Chuck Norris facts.
