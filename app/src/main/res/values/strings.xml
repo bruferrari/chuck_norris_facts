@@ -13,4 +13,5 @@
     <string name="msg_initial_state">Welcome to Chuck Norris facts, click at the search button above to find facts.
     </string>
     <string name="check_fact_lbl">Check fact</string>
+    <string name="chuck_image">chuck image</string>
 </resources>

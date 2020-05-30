@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.R
 import com.bferrari.stonechallenge.utils.Consts.FACT_INTENT
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_fact_detail.*
 
 class FactDetailActivity : AppCompatActivity() {
@@ -16,10 +17,17 @@ class FactDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fact_detail)
 
         val fact: Fact = intent.getSerializableExtra(FACT_INTENT) as Fact
+
         factText.text = fact.value
         checkFactButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(fact.url) }
             startActivity(intent)
         }
+        Picasso.get()
+                .load(fact.iconUrl)
+                .resize(100, 100)
+                .into(iconImage)
+
+        factDetailContainer.transitionToEnd()
     }
 }

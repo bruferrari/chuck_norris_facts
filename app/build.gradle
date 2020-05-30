@@ -78,7 +78,14 @@ dependencies {
     //Timber
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
+    //Stetho
     implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    // Motion Layout (Constraint Layout)
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     //Unit Tests
     testImplementation "junit:junit:$jUnitVersion"
