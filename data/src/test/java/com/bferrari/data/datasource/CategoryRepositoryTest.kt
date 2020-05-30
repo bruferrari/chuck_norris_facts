@@ -5,12 +5,11 @@ import TestUtils.Companion.categories
 import TestUtils.Companion.categoryResponse
 import TestUtils.Companion.retrofitInstance
 import com.bferrari.data.CategoryCache
-import com.bferrari.data.StoneAppApi
+import com.bferrari.data.AppApiService
 import com.google.gson.Gson
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import junit.framework.Assert.assertEquals
-import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Before
@@ -19,9 +18,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mockito
 import org.mockito.Mockito.*
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @RunWith(JUnit4::class)
@@ -29,7 +25,7 @@ class CategoryRepositoryTest {
 
     private lateinit var repository: CategoryDataSource
     private lateinit var localPersistence: CategoryCache
-    private lateinit var api: StoneAppApi
+    private lateinit var api: AppApiService
     private lateinit var webServer: MockWebServer
     private lateinit var gson: Gson
 
@@ -43,7 +39,7 @@ class CategoryRepositoryTest {
         val baseURL = webServer.url("/").toString()
         val retrofit = retrofitInstance(baseURL)
 
-        api = retrofit.create(StoneAppApi::class.java)
+        api = retrofit.create(AppApiService::class.java)
 
         repository = CategoryRepository(api, localPersistence)
     }

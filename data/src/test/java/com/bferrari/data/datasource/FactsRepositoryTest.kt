@@ -1,11 +1,10 @@
 package com.bferrari.data.datasource
 
 import TestUtils.Companion.retrofitInstance
-import com.bferrari.data.StoneAppApi
+import com.bferrari.data.AppApiService
 import com.bferrari.data.model.FactsResponse
 import com.bferrari.domain.Fact
 import com.google.gson.Gson
-import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Assert.assertEquals
@@ -13,16 +12,13 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @RunWith(JUnit4::class)
 class FactsRepositoryTest {
 
     private lateinit var repository: FactsDataSource
-    private lateinit var api: StoneAppApi
+    private lateinit var api: AppApiService
     private lateinit var gson: Gson
     private lateinit var webServer: MockWebServer
 
@@ -35,7 +31,7 @@ class FactsRepositoryTest {
         val baseURL = webServer.url("/").toString()
         val retrofit = retrofitInstance(baseURL)
 
-        api = retrofit.create(StoneAppApi::class.java)
+        api = retrofit.create(AppApiService::class.java)
 
         repository = FactsRepository(api)
     }

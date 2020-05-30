@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Stone Challenge</string>
+    <string name="app_name">Chuck Norris Facts</string>
     <string name="search_label">Buscar</string>
     <string name="share_label">Compartilhar</string>
     <string name="uncategorized_label">Uncategorized</string>

@@ -1,6 +1,6 @@
 package com.bferrari.data.injection
 
-import com.bferrari.data.StoneAppApi
+import com.bferrari.data.AppApiService
 import com.bferrari.data.datasource.*
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -11,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 val apiModule = module {
-    single<StoneAppApi> {
+    single<AppApiService> {
         val interceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -24,7 +24,7 @@ val apiModule = module {
             .baseUrl("https://api.chucknorris.io/")
             .build()
 
-        retrofit.create(StoneAppApi::class.java)
+        retrofit.create(AppApiService::class.java)
     }
 }
 
