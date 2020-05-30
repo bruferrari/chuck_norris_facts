@@ -12,7 +12,9 @@ import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.EspressoIdlingResource
 import com.bferrari.stonechallenge.R
 import com.bferrari.stonechallenge.extensions.*
+import com.bferrari.stonechallenge.ui.factdetails.FactDetailActivity
 import com.bferrari.stonechallenge.ui.searchfacts.SearchFactsActivity
+import com.bferrari.stonechallenge.utils.Consts.FACT_INTENT
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -48,7 +50,7 @@ class FactsActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = FactsAdapter(this, ::share)
+        adapter = FactsAdapter(this, ::share, ::onItemFactClicked)
 
         displayInitialState()
 
@@ -140,6 +142,14 @@ class FactsActivity : AppCompatActivity() {
     private fun hideEmptyState() {
         factsRecyclerView.show()
         emptyState.hide()
+    }
+
+    private fun onItemFactClicked(fact: Fact) {
+        val intent = Intent(this, FactDetailActivity::class.java).apply {
+            putExtra(FACT_INTENT, fact)
+        }
+
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
