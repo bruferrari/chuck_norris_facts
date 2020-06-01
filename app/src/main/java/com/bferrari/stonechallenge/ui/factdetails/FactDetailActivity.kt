@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bferrari.domain.Fact
 import com.bferrari.stonechallenge.R
 import com.bferrari.stonechallenge.utils.Consts.FACT_INTENT
+import com.bferrari.stonechallenge.utils.WorkerDispatcher
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_fact_detail.*
 
@@ -18,6 +19,7 @@ class FactDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fact_detail)
 
         setupUi()
+        WorkerDispatcher.dispatch(this)
     }
 
     private fun setupUi() {
