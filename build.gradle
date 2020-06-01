@@ -40,6 +40,10 @@ ext {
     mockWebServerVersion = '3.13.1'
     testVersion = '1.1.0'
     espressoVersion = '3.1.0'
+    workManagerVersion = '2.3.4'
+    picassoVersion = '2.71828'
+    constraintLayoutVersion = '2.0.0-beta1'
+    stethoVersion = '1.5.1'
 }
 
 allprojects {
