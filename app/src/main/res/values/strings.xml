@@ -14,4 +14,6 @@
     </string>
     <string name="check_fact_lbl">Check fact</string>
     <string name="chuck_image">chuck image</string>
+    <string name="notification_channel_name">norrisfication</string>
+    <string name="notification_channel_description">chuck norris notifications</string>
 </resources>

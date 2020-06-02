@@ -7,15 +7,22 @@ import java.util.concurrent.TimeUnit
 
 object WorkerDispatcher {
     fun dispatch(context: Context) {
-        val workRequest = PeriodicWorkRequestBuilder<NotificationWorker>(15, TimeUnit.MINUTES).build()
+        val workRequest = PeriodicWorkRequestBuilder<NotificationWorker>(24, TimeUnit.HOURS)
+            .setInitialDelay(15, TimeUnit.SECONDS) //TODO: Change to minutes
+            .build()
         WorkManager.getInstance(context).enqueue(workRequest)
     }
 }
 
-class NotificationWorker(appContext: Context, workerParams: WorkerParameters) : Worker(appContext, workerParams) {
+class NotificationWorker(private val appContext: Context, workerParams: WorkerParameters) : Worker(appContext, workerParams) {
 
     override fun doWork(): Result {
-        Log.d("AQUI", "test work manager")
+        //TODO: add real fact here
+        PushNotificationManager.show(appContext, NOTIFICATION_ID, "message from worker dispatcher")
         return Result.success()
+    }
+
+    companion object {
+        private const val NOTIFICATION_ID = 1
     }
 }
