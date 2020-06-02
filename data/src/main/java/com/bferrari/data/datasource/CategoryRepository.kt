@@ -1,14 +1,14 @@
 package com.bferrari.data.datasource
 
 import com.bferrari.data.CategoryCache
-import com.bferrari.data.StoneAppApi
+import com.bferrari.data.AppApiService
 import com.bferrari.domain.Category
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import com.bferrari.data.RetryWithDelay
 
 
-class CategoryRepository(private val api: StoneAppApi,
+class CategoryRepository(private val api: AppApiService,
                          private val cache: CategoryCache): CategoryDataSource {
 
     companion object {

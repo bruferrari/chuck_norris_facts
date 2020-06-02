@@ -13,4 +13,6 @@ val useCaseModules = module {
     single { GetPastSearches(get()) }
 
     single { SavePastSearch(get()) }
+
+    single { SaveFacts(get()) }
 }

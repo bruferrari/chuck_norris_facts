@@ -19,6 +19,10 @@ android {
             sourceCompatibility = "8"
         }
 
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+
         dataBinding {
             enabled = true
         }
@@ -78,11 +82,21 @@ dependencies {
     //Timber
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
-    implementation 'com.facebook.stetho:stetho:1.5.1'
+    //Stetho
+    implementation "com.facebook.stetho:stetho:$stethoVersion"
+
+    // Motion Layout (Constraint Layout)
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    // Picasso
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
 
     //Unit Tests
     testImplementation "junit:junit:$jUnitVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    //Work Manager
+    implementation "androidx.work:work-runtime-ktx:$workManagerVersion"
 
     // Espresso (Instrumentation Tests)
     androidTestImplementation "androidx.test:core:$testVersion"
