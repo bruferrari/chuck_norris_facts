@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 object WorkerDispatcher {
     fun dispatch(context: Context) {
         val workRequest = PeriodicWorkRequestBuilder<NotificationWorker>(24, TimeUnit.HOURS)
-            .setInitialDelay(15, TimeUnit.SECONDS)
+            .setInitialDelay(1, TimeUnit.MINUTES)
             .build()
         WorkManager.getInstance(context).enqueue(workRequest)
     }
