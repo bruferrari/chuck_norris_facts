@@ -18,7 +18,6 @@ class FactDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fact_detail)
 
         setupUi()
-//        WorkerDispatcher.dispatch(this)
     }
 
     private fun setupUi() {

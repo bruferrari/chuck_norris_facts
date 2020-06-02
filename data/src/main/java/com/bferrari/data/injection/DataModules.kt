@@ -29,7 +29,7 @@ val apiModule = module {
 }
 
 val dataModule = module {
-    single<FactsDataSource> { FactsRepository(get()) }
+    single<FactsDataSource> { FactsRepository(get(), get()) }
 
     single<CategoryDataSource> { CategoryRepository(get(), get()) }
 

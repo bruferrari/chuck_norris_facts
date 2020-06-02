@@ -17,7 +17,7 @@ object PushNotificationManager {
         context?.let {
             NotificationCompat.Builder(it, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_extension_black_24dp)
-                .setContentTitle(it.getString(R.string.app_name))
+                .setContentTitle(it.getString(R.string.notification_title))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         }
     }
@@ -44,7 +44,11 @@ object PushNotificationManager {
     fun show(context: Context, notificationId: Int, message: String) {
         if (builder == null) return
 
-        builder!!.setContentText(message)
+        builder?.apply {
+            setContentText(message)
+            setStyle(NotificationCompat.BigTextStyle()
+                .bigText(message))
+        }
         val notification = builder!!.build()
 
         with(NotificationManagerCompat.from(context)) {

@@ -16,4 +16,5 @@
     <string name="chuck_image">chuck image</string>
     <string name="notification_channel_name">norrisfication</string>
     <string name="notification_channel_description">chuck norris notifications</string>
+    <string name="notification_title">Chuck Norris once said…</string>
 </resources>

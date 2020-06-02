@@ -3,6 +3,7 @@ package com.bferrari.stonechallenge.ui.factslist
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import com.bferrari.stonechallenge.extensions.*
 import com.bferrari.stonechallenge.ui.factdetails.FactDetailActivity
 import com.bferrari.stonechallenge.ui.searchfacts.SearchFactsActivity
 import com.bferrari.stonechallenge.utils.Consts.FACT_INTENT
+import com.bferrari.stonechallenge.utils.WorkerDispatcher
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -84,7 +86,9 @@ class FactsActivity : AppCompatActivity() {
                         EspressoIdlingResource.idlingResource.decrement()
                 }
                 .doOnError { setLoadingIndicator(false) }
-                .subscribe ({ setFacts(it) }, ::handleError)
+                .subscribe ({
+                    setFacts(it)
+                }, ::handleError)
                 .add(disposable)
     }
 
